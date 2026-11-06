@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="240" rx="12" fill="#030712" />
+  <rect x="1" y="1" width="598" height="238" rx="11" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+
+  <!-- Stage 1: Baseline FP32 Model -->
+  <g transform="translate(25, 40)">
+    <rect width="115" height="160" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <text x="57" y="24" fill="#93C5FD" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">BASELINE MODEL</text>
+    <line x1="12" y1="34" x2="103" y2="34" stroke="#1E293B" stroke-width="1" />
+    <text x="57" y="55" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">ResNet-18</text>
+    <text x="57" y="72" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">CIFAR-100</text>
+    <rect x="15" y="86" width="85" height="18" rx="3" fill="#1E293B" />
+    <text x="57" y="99" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="8.5" text-anchor="middle">Precision: FP32</text>
+    <rect x="15" y="112" width="85" height="18" rx="3" fill="#1E293B" />
+    <text x="57" y="125" fill="#EF4444" font-family="system-ui, sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">~45 MB Storage</text>
+    <text x="57" y="147" fill="#64748B" font-family="system-ui, sans-serif" font-size="8" text-anchor="middle">High VRAM / Compute</text>
+  </g>
+
+  <!-- Flow Arrow -->
+  <path d="M 145 120 L 175 120" stroke="#8B5CF6" stroke-width="2" />
+
+  <!-- Stage 2: Compression Pipeline -->
+  <g transform="translate(180, 35)">
+    <rect width="210" height="170" rx="10" fill="#111827" stroke="url(#edgeGrad)" stroke-width="2" />
+    <text x="105" y="24" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="800" text-anchor="middle">COMPRESSION PIPELINE</text>
+    <text x="105" y="40" fill="#C084FC" font-family="system-ui, sans-serif" font-size="9" font-weight="600" text-anchor="middle">Multi-Technique Optimization</text>
+    <line x1="20" y1="50" x2="190" y2="50" stroke="#1E293B" stroke-width="1" />
+
+    <!-- Step A: Pruning -->
+    <g transform="translate(18, 60)">
+      <rect width="174" height="28" rx="4" fill="#1E293B" stroke="rgba(139, 92, 246, 0.4)" stroke-width="1" />
+      <text x="10" y="18" fill="#C084FC" font-family="system-ui, sans-serif" font-size="9" font-weight="700">1. Structured Pruning</text>
+      <text x="164" y="18" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8" text-anchor="end">-40% FLOPs</text>
+    </g>
+
+    <!-- Step B: INT8 Quantization -->
+    <g transform="translate(18, 96)">
+      <rect width="174" height="28" rx="4" fill="#1E293B" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1" />
+      <text x="10" y="18" fill="#67E8F9" font-family="system-ui, sans-serif" font-size="9" font-weight="700">2. INT8 Quantization</text>
+      <text x="164" y="18" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="8" font-weight="700" text-anchor="end">4x Smaller</text>
+    </g>
+
+    <!-- Step C: Knowledge Distillation -->
+    <g transform="translate(18, 132)">
+      <rect width="174" height="28" rx="4" fill="#1E293B" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1" />
+      <text x="10" y="18" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9" font-weight="700">3. Distillation (ResNet-50)</text>
+      <text x="164" y="18" fill="#A7F3D0" font-family="system-ui, sans-serif" font-size="8" text-anchor="end">+Acc Restored</text>
+    </g>
+  </g>
+
+  <!-- Flow Arrow -->
+  <path d="M 395 120 L 425 120" stroke="#06B6D4" stroke-width="2" />
+
+  <!-- Stage 3: Optimized Edge Target -->
+  <g transform="translate(430, 40)">
+    <rect width="145" height="160" rx="8" fill="#111827" stroke="#06B6D4" stroke-width="1.8" />
+    <text x="72" y="24" fill="#67E8F9" font-family="system-ui, sans-serif" font-size="10.5" font-weight="800" text-anchor="middle">EDGE DEPLOYMENT</text>
+    <line x1="12" y1="34" x2="133" y2="34" stroke="#1E293B" stroke-width="1" />
+    <text x="72" y="55" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">ONNX Runtime</text>
+    <text x="72" y="72" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Embedded &amp; IoT Ready</text>
+    <rect x="15" y="86" width="115" height="22" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="1" />
+    <text x="72" y="101" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9" font-weight="700" text-anchor="middle">~11 MB Model Size</text>
+    <rect x="15" y="116" width="115" height="22" rx="4" fill="rgba(6, 182, 212, 0.15)" stroke="#06B6D4" stroke-width="1" />
+    <text x="72" y="131" fill="#67E8F9" font-family="system-ui, sans-serif" font-size="9" font-weight="700" text-anchor="middle">3.8x Latency Speedup</text>
+  </g>
+</svg>
+

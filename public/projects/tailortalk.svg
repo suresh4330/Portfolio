@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tt-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14"/>
+      <stop offset="100%" stop-color="#0B132B"/>
+    </linearGradient>
+    <linearGradient id="tt-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="tt-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <filter id="tt-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#tt-bg)"/>
+  
+  <!-- Subtle Grid Pattern -->
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+    <line x1="50" y1="0" x2="50" y2="350" />
+    <line x1="150" y1="0" x2="150" y2="350" />
+    <line x1="250" y1="0" x2="250" y2="350" />
+    <line x1="350" y1="0" x2="350" y2="350" />
+    <line x1="450" y1="0" x2="450" y2="350" />
+    <line x1="550" y1="0" x2="550" y2="350" />
+    <line x1="650" y1="0" x2="650" y2="350" />
+    <line x1="750" y1="0" x2="750" y2="350" />
+  </g>
+
+  <!-- Flow Arrows -->
+  <path d="M 170 175 L 230 175" stroke="#38BDF8" stroke-width="2.5" stroke-dasharray="4,4" />
+  <path d="M 370 175 L 430 175" stroke="#818CF8" stroke-width="2.5" stroke-dasharray="4,4" />
+  <path d="M 570 175 L 630 175" stroke="#34D399" stroke-width="2.5" />
+
+  <!-- Node 1: Visual / Text Query -->
+  <rect x="40" y="115" width="130" height="120" rx="12" fill="#0D1527" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5" />
+  <circle cx="105" cy="155" r="20" fill="rgba(6, 182, 212, 0.15)" stroke="#38BDF8" stroke-width="1.5" />
+  <text x="105" y="160" font-family="'Space Grotesk', sans-serif" font-size="16" fill="#38BDF8" font-weight="bold" text-anchor="middle">CLIP</text>
+  <text x="105" y="195" font-family="'DM Sans', sans-serif" font-size="12" fill="#94A3B8" font-weight="600" text-anchor="middle">ViT-B/32 Vision</text>
+  <text x="105" y="215" font-family="'DM Sans', sans-serif" font-size="10" fill="#64748B" text-anchor="middle">512-D Embeddings</text>
+
+  <!-- Node 2: Vector Retrieval Engine -->
+  <rect x="230" y="100" width="140" height="150" rx="12" fill="#131B33" stroke="url(#tt-purple)" stroke-width="2" filter="url(#tt-glow)"/>
+  <rect x="230" y="100" width="140" height="150" rx="12" fill="#131B33" stroke="#8B5CF6" stroke-width="1.5" />
+  <text x="300" y="135" font-family="'Space Grotesk', sans-serif" font-size="15" fill="#DDD6FE" font-weight="bold" text-anchor="middle">FAISS Pipeline</text>
+  <rect x="248" y="150" width="104" height="24" rx="4" fill="rgba(139, 92, 246, 0.2)" stroke="#A78BFA" stroke-width="1"/>
+  <text x="300" y="166" font-family="monospace" font-size="10" fill="#E9D5FF" text-anchor="middle">IndexFlatIP</text>
+  <text x="300" y="200" font-family="'DM Sans', sans-serif" font-size="11" fill="#C4B5FD" text-anchor="middle">Sub-15ms Latency</text>
+  <text x="300" y="220" font-family="'DM Sans', sans-serif" font-size="10" fill="#7C3AED" font-weight="bold" text-anchor="middle">Cosine Similarity</text>
+
+  <!-- Node 3: Color Reranker and LangChain Loop -->
+  <rect x="430" y="115" width="140" height="120" rx="12" fill="#0D1527" stroke="rgba(129, 140, 248, 0.5)" stroke-width="1.5" />
+  <text x="500" y="148" font-family="'Space Grotesk', sans-serif" font-size="14" fill="#A5B4FC" font-weight="bold" text-anchor="middle">HSV Reranker</text>
+  <text x="500" y="172" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Color Histograms</text>
+  <text x="500" y="195" font-family="'DM Sans', sans-serif" font-size="11" fill="#818CF8" font-weight="600" text-anchor="middle">LangChain Agent</text>
+  <text x="500" y="215" font-family="'DM Sans', sans-serif" font-size="9" fill="#64748B" text-anchor="middle">Contextual Memory</text>
+
+  <!-- Node 4: Multimodal Match Output -->
+  <rect x="630" y="125" width="130" height="100" rx="12" fill="#0D1F2D" stroke="#34D399" stroke-width="1.5" />
+  <text x="695" y="158" font-family="'Space Grotesk', sans-serif" font-size="13" fill="#6EE7B7" font-weight="bold" text-anchor="middle">Ranked Matches</text>
+  <text x="695" y="180" font-family="'DM Sans', sans-serif" font-size="11" fill="#A7F3D0" text-anchor="middle">Visual Similarity</text>
+  <text x="695" y="202" font-family="'DM Sans', sans-serif" font-size="10" fill="#34D399" font-weight="bold" text-anchor="middle">RESTful Endpoints</text>
+
+  <!-- Header Banner -->
+  <text x="400" y="45" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#FFFFFF" font-weight="bold" text-anchor="middle" letter-spacing="1">TAILORTALK — MULTIMODAL AI &amp; FAISS RETRIEVAL</text>
+  <text x="400" y="70" font-family="'DM Sans', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">Zero-Shot Semantic Visual Search • OpenAI CLIP ViT-B/32 • Sub-15ms FAISS Vector Queries</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ss-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050C16"/>
+      <stop offset="100%" stop-color="#0E1B2E"/>
+    </linearGradient>
+    <linearGradient id="ss-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#ss-bg)"/>
+
+  <!-- Flow Lines -->
+  <path d="M 170 175 L 240 175" stroke="#34D399" stroke-width="2" stroke-dasharray="4,4" />
+  <path d="M 380 175 L 450 175" stroke="#38BDF8" stroke-width="2" />
+  <path d="M 590 175 L 650 175" stroke="#A78BFA" stroke-width="2" />
+
+  <!-- Node 1: Multilingual Intake -->
+  <rect x="40" y="110" width="130" height="130" rx="12" fill="#091A25" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" />
+  <text x="105" y="145" font-family="'Space Grotesk', sans-serif" font-size="14" fill="#6EE7B7" font-weight="bold" text-anchor="middle">Formulation Intake</text>
+  <text x="105" y="172" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Multi-Language</text>
+  <text x="105" y="195" font-family="'DM Sans', sans-serif" font-size="10" fill="#CBD5E1" text-anchor="middle">EN / HI / Regional</text>
+  <text x="105" y="215" font-family="'DM Sans', sans-serif" font-size="10" fill="#10B981" font-weight="bold" text-anchor="middle">6 Routing Labels</text>
+
+  <!-- Node 2: Authoritative RAG and Corpus -->
+  <rect x="240" y="95" width="140" height="160" rx="12" fill="#0A2234" stroke="url(#ss-emerald)" stroke-width="2" />
+  <text x="310" y="130" font-family="'Space Grotesk', sans-serif" font-size="15" fill="#67E8F9" font-weight="bold" text-anchor="middle">Evidence RAG</text>
+  <rect x="255" y="145" width="110" height="24" rx="4" fill="rgba(6, 182, 212, 0.2)" stroke="#38BDF8" stroke-width="1"/>
+  <text x="310" y="161" font-family="monospace" font-size="10" fill="#E0F2FE" text-anchor="middle">Source Citation</text>
+  <text x="310" y="195" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Patent &amp; TK Corpus</text>
+  <text x="310" y="218" font-family="'DM Sans', sans-serif" font-size="11" fill="#CBD5E1" text-anchor="middle">Jurisdiction Filters</text>
+  <text x="310" y="238" font-family="'DM Sans', sans-serif" font-size="10" fill="#06B6D4" font-weight="bold" text-anchor="middle">Safe Abstention</text>
+
+  <!-- Node 3: Backend APIs and Security (Suresh Module) -->
+  <rect x="450" y="110" width="140" height="130" rx="12" fill="#0D1A30" stroke="rgba(56, 189, 248, 0.5)" stroke-width="1.5" />
+  <text x="520" y="145" font-family="'Space Grotesk', sans-serif" font-size="14" fill="#93C5FD" font-weight="bold" text-anchor="middle">Backend Services</text>
+  <text x="520" y="172" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">FastAPI Endpoints</text>
+  <text x="520" y="195" font-family="'DM Sans', sans-serif" font-size="10" fill="#CBD5E1" text-anchor="middle">PostgreSQL &amp; Auth</text>
+  <text x="520" y="215" font-family="'DM Sans', sans-serif" font-size="10" fill="#38BDF8" font-weight="bold" text-anchor="middle">Audit Logging</text>
+
+  <!-- Node 4: Cited Regulatory Advice Output -->
+  <rect x="650" y="120" width="120" height="110" rx="12" fill="#13142A" stroke="#A78BFA" stroke-width="1.5" />
+  <text x="710" y="155" font-family="'Space Grotesk', sans-serif" font-size="13" fill="#DDD6FE" font-weight="bold" text-anchor="middle">Referral Packet</text>
+  <text x="710" y="180" font-family="'DM Sans', sans-serif" font-size="11" fill="#C4B5FD" text-anchor="middle">Cited Answers</text>
+  <text x="710" y="202" font-family="'DM Sans', sans-serif" font-size="10" fill="#A78BFA" font-weight="bold" text-anchor="middle">Human Referral</text>
+
+  <!-- Header Banner -->
+  <text x="400" y="45" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#FFFFFF" font-weight="bold" text-anchor="middle" letter-spacing="1">IP-SAKTI SAHAYAK (SIH26045)</text>
+  <text x="400" y="70" font-family="'DM Sans', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">Smart India Hackathon Capstone • Source-Cited Regulatory AI Assistant • Multi-Language RAG</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="med-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040D1A"/>
+      <stop offset="100%" stop-color="#081A2F"/>
+    </linearGradient>
+    <linearGradient id="med-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#med-bg)"/>
+
+  <!-- Flow Lines -->
+  <path d="M 180 175 L 260 175" stroke="#38BDF8" stroke-width="2" stroke-dasharray="4,4" />
+  <path d="M 400 175 L 480 175" stroke="#60A5FA" stroke-width="2" />
+  <path d="M 620 175 L 680 175" stroke="#34D399" stroke-width="2" />
+
+  <!-- Node 1: React 18 UI Portals -->
+  <rect x="50" y="110" width="130" height="130" rx="12" fill="#0A182E" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5" />
+  <text x="115" y="145" font-family="'Space Grotesk', sans-serif" font-size="14" fill="#67E8F9" font-weight="bold" text-anchor="middle">React UI Portal</text>
+  <text x="115" y="172" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Role-Based Views</text>
+  <text x="115" y="195" font-family="'DM Sans', sans-serif" font-size="10" fill="#CBD5E1" text-anchor="middle">Patient / Doctor</text>
+  <text x="115" y="215" font-family="'DM Sans', sans-serif" font-size="10" fill="#38BDF8" font-weight="bold" text-anchor="middle">Admin Control</text>
+
+  <!-- Node 2: Node.js and Express API Gateway -->
+  <rect x="260" y="95" width="140" height="160" rx="12" fill="#0D233A" stroke="#3B82F6" stroke-width="2" />
+  <text x="330" y="130" font-family="'Space Grotesk', sans-serif" font-size="15" fill="#93C5FD" font-weight="bold" text-anchor="middle">Express Backend</text>
+  <rect x="275" y="145" width="110" height="24" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#60A5FA" stroke-width="1"/>
+  <text x="330" y="161" font-family="monospace" font-size="10" fill="#BFDBFE" text-anchor="middle">JWT Auth &amp; RBAC</text>
+  <text x="330" y="195" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">RESTful Endpoints</text>
+  <text x="330" y="218" font-family="'DM Sans', sans-serif" font-size="11" fill="#CBD5E1" text-anchor="middle">Scheduling Logic</text>
+  <text x="330" y="238" font-family="'DM Sans', sans-serif" font-size="10" fill="#60A5FA" font-weight="bold" text-anchor="middle">Input Validation</text>
+
+  <!-- Node 3: Database and State -->
+  <rect x="480" y="110" width="140" height="130" rx="12" fill="#0A182E" stroke="rgba(96, 165, 250, 0.4)" stroke-width="1.5" />
+  <text x="550" y="145" font-family="'Space Grotesk', sans-serif" font-size="14" fill="#93C5FD" font-weight="bold" text-anchor="middle">Data Persistence</text>
+  <text x="550" y="172" font-family="'DM Sans', sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Relational / Schemas</text>
+  <text x="550" y="195" font-family="'DM Sans', sans-serif" font-size="10" fill="#CBD5E1" text-anchor="middle">Consultation Logs</text>
+  <text x="550" y="215" font-family="'DM Sans', sans-serif" font-size="10" fill="#34D399" font-weight="bold" text-anchor="middle">Audit Trails</text>
+
+  <!-- Node 4: Notifications and Status -->
+  <rect x="680" y="125" width="100" height="100" rx="12" fill="#061A28" stroke="#34D399" stroke-width="1.5" />
+  <text x="730" y="160" font-family="'Space Grotesk', sans-serif" font-size="13" fill="#6EE7B7" font-weight="bold" text-anchor="middle">Confirm</text>
+  <text x="730" y="185" font-family="'DM Sans', sans-serif" font-size="11" fill="#A7F3D0" text-anchor="middle">Real-Time</text>
+  <text x="730" y="205" font-family="'DM Sans', sans-serif" font-size="10" fill="#34D399" font-weight="bold" text-anchor="middle">Email Alerts</text>
+
+  <!-- Header Banner -->
+  <text x="400" y="45" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#FFFFFF" font-weight="bold" text-anchor="middle" letter-spacing="1">MEDICAL APPOINTMENT MANAGEMENT SYSTEM</text>
+  <text x="400" y="70" font-family="'DM Sans', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">Full-Stack Healthcare Operations • Role-Based Access Control • Express.js REST APIs</text>
+</svg>

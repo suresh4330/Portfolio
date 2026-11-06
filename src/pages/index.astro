@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import Skills from '../components/Skills.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import LearningJourney from '../components/LearningJourney.astro';
+import EducationSection from '../components/EducationSection.astro';
+import CertificationsSection from '../components/CertificationsSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import BlogCard from '../components/BlogCard.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const allBlogPosts = await getCollection('blog');
+const recentPosts = allBlogPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title="Annamneedi Suresh Kumar | AI/ML Engineer | Generative AI Developer"
+  description="Portfolio of Annamneedi Suresh Kumar — AI/ML Engineer, Generative AI Developer, and Software Engineer specializing in Mixture of Experts (MoE), Edge Model Compression, and scalable full-stack applications."
+>
+  <Navigation />
+
+  <main id="main-content">
+    <Hero />
+    <AboutSection />
+    <Skills />
+    <ProjectsSection />
+    <LearningJourney />
+    <EducationSection />
+    <CertificationsSection />
+
+    <!-- Technical Articles / Blog Section -->
+    <section class="recent-posts" id="articles" aria-label="Technical Articles & Engineering Notes">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-purple">Engineering Notes</div>
+          <h2 class="section-title">Technical Articles</h2>
+          <p class="section-subtitle">
+            Deep architectural explorations covering Mixture-of-Experts routing, edge model compression, and modern agentic systems.
+          </p>
+        </div>
+
+        <div class="posts-grid">
+          {recentPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              pubDate={post.data.pubDate}
+              slug={post.id}
+              tags={post.data.tags}
+            />
+          ))}
+        </div>
+
+        <div class="view-all">
+          <a href={`${base}blog/`} class="btn btn-secondary">
+            <span>View All Technical Articles</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <ContactSection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .recent-posts {
+    padding: 6rem 0;
+    position: relative;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .view-all {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .recent-posts {
+      padding: 4rem 0;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,180 @@
+---
+const base = import.meta.env.BASE_URL;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer" aria-label="Site Footer">
+  <div class="container footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href={base} class="footer-logo">
+          <span class="logo-text">SURESH<span class="logo-accent">.AI</span></span>
+        </a>
+        <p class="brand-tagline">
+          AI/ML Engineer & Generative AI Developer specializing in Mixture-of-Experts architectures, edge model compression, and scalable full-stack applications.
+        </p>
+        <div class="brand-meta">
+          <span>Lovely Professional University</span>
+          <span class="sep">•</span>
+          <span>B.Tech CSE (AI & ML)</span>
+          <span class="sep">•</span>
+          <span>CGPA: 8.32 (2027)</span>
+        </div>
+      </div>
+
+      <div class="footer-nav-col">
+        <span class="footer-col-title">Navigation</span>
+        <div class="footer-links">
+          <a href={base}>Home</a>
+          <a href={`${base}about/`}>About Me</a>
+          <a href={`${base}#skills`}>Technical Skills</a>
+          <a href={`${base}projects/`}>All Projects</a>
+          <a href={`${base}#certifications`}>Certifications & Awards</a>
+          <a href={`${base}#journey`}>Technical Journey</a>
+          <a href={`${base}blog/`}>Technical Articles</a>
+        </div>
+      </div>
+
+      <div class="footer-nav-col">
+        <span class="footer-col-title">Connect</span>
+        <div class="footer-links">
+          <a href="https://github.com/suresh4330" target="_blank" rel="noopener noreferrer">
+            GitHub Profile
+          </a>
+          <a href="https://linkedin.com/in/annamneedi-suresh-kumar" target="_blank" rel="noopener noreferrer">
+            LinkedIn Profile
+          </a>
+          <a href="tel:+919121104330">
+            +91-9121104330
+          </a>
+          <a href={`${base}#contact`}>Contact Form</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">
+        © {currentYear} Annamneedi Suresh Kumar. All rights reserved.
+      </p>
+      <p class="tech-note">
+        Crafted with Astro, Three.js & TypeScript • Dark Abyss Identity
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(3, 7, 18, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 4.5rem 0 2.5rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .footer-logo {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 1.35rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    letter-spacing: 0.05em;
+  }
+
+  .logo-accent {
+    color: var(--color-accent-cyan);
+  }
+
+  .brand-tagline {
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
+    max-width: 440px;
+  }
+
+  .brand-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+
+  .sep {
+    color: var(--color-primary);
+  }
+
+  .footer-col-title {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+    margin-bottom: 1.15rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-links a {
+    color: var(--color-text-dim);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent-cyan);
+    transform: translateX(2px);
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+
+  .tech-note {
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 800px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
+

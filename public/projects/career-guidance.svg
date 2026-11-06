@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="rfGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="240" rx="12" fill="#030712" />
+  <rect x="1" y="1" width="598" height="238" rx="11" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+
+  <!-- Inputs Column -->
+  <g transform="translate(25, 45)">
+    <rect width="110" height="150" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <text x="55" y="24" fill="#67E8F9" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">STUDENT DATA</text>
+    <line x1="12" y1="36" x2="98" y2="36" stroke="#1E293B" stroke-width="1" />
+    <text x="18" y="56" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Academic Scores</text>
+    <text x="18" y="78" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Aptitude Vectors</text>
+    <text x="18" y="100" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Coding Skills</text>
+    <text x="18" y="122" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Domain Interests</text>
+    <rect x="14" y="132" width="82" height="12" rx="3" fill="rgba(6, 182, 212, 0.15)" />
+    <text x="55" y="141" fill="#67E8F9" font-family="system-ui, sans-serif" font-size="7.5" font-weight="600" text-anchor="middle">FEATURE MATRIX</text>
+  </g>
+
+  <!-- Flow Arrow -->
+  <path d="M 140 120 L 175 120" stroke="#06B6D4" stroke-width="2" />
+
+  <!-- Preprocessing and Scaling -->
+  <g transform="translate(180, 75)">
+    <rect width="105" height="90" rx="8" fill="#111827" stroke="#06B6D4" stroke-width="1.5" />
+    <text x="52" y="24" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">PREPROCESSING</text>
+    <text x="52" y="44" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">One-Hot Encoding</text>
+    <text x="52" y="60" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">StandardScaler</text>
+    <text x="52" y="76" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Imputation</text>
+  </g>
+
+  <!-- Flow Arrow -->
+  <path d="M 290 120 L 325 120" stroke="#06B6D4" stroke-width="2" />
+
+  <!-- Random Forest Ensemble -->
+  <g transform="translate(330, 50)">
+    <rect width="130" height="140" rx="10" fill="#111827" stroke="url(#rfGrad)" stroke-width="2" />
+    <text x="65" y="24" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="800" text-anchor="middle">RANDOM FOREST</text>
+    <text x="65" y="40" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9" font-weight="700" text-anchor="middle">Ensemble Model</text>
+    
+    <!-- Mini Trees visualization -->
+    <g transform="translate(18, 55)">
+      <circle cx="15" cy="12" r="5" fill="#10B981" />
+      <circle cx="5" cy="28" r="4" fill="#06B6D4" />
+      <circle cx="25" cy="28" r="4" fill="#06B6D4" />
+      <line x1="15" y1="12" x2="5" y2="28" stroke="#10B981" stroke-width="1.2" />
+      <line x1="15" y1="12" x2="25" y2="28" stroke="#10B981" stroke-width="1.2" />
+
+      <circle cx="75" cy="12" r="5" fill="#10B981" />
+      <circle cx="65" cy="28" r="4" fill="#06B6D4" />
+      <circle cx="85" cy="28" r="4" fill="#06B6D4" />
+      <line x1="75" y1="12" x2="65" y2="28" stroke="#10B981" stroke-width="1.2" />
+      <line x1="75" y1="12" x2="85" y2="28" stroke="#10B981" stroke-width="1.2" />
+    </g>
+
+    <!-- Accuracy Badge -->
+    <rect x="18" y="105" width="94" height="22" rx="4" fill="rgba(16, 185, 129, 0.2)" stroke="#10B981" stroke-width="1" />
+    <text x="65" y="120" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="10" font-weight="800" text-anchor="middle">85% Accuracy</text>
+  </g>
+
+  <!-- Flow Arrow -->
+  <path d="M 465 120 L 495 120" stroke="#10B981" stroke-width="2" />
+
+  <!-- Output Pathways -->
+  <g transform="translate(500, 60)">
+    <rect width="80" height="120" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <text x="40" y="24" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="9" font-weight="700" text-anchor="middle">PATHWAYS</text>
+    <rect x="8" y="36" width="64" height="18" rx="3" fill="#1E293B" />
+    <text x="40" y="48" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="8" text-anchor="middle">Data Science</text>
+    <rect x="8" y="60" width="64" height="18" rx="3" fill="#1E293B" />
+    <text x="40" y="72" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="8" text-anchor="middle">AI Engineer</text>
+    <rect x="8" y="84" width="64" height="18" rx="3" fill="#1E293B" />
+    <text x="40" y="96" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="8" text-anchor="middle">Cloud Systems</text>
+  </g>
+</svg>

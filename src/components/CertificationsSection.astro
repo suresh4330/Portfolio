@@ -1,0 +1,227 @@
+---
+// Certifications & Achievements Section - Verified credentials and technical milestones from CV
+
+const certifications = [
+  {
+    title: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate',
+    issuer: 'Oracle University',
+    date: 'Mar 2026',
+    badge: 'OCI Certified',
+    badgeClass: 'badge-purple',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>`,
+    description: 'Cloud artificial intelligence infrastructure, OCI AI services, machine learning workloads, and enterprise cloud architecture principles.'
+  },
+  {
+    title: 'Principles of Generative AI',
+    issuer: 'Infosys Springboard',
+    date: 'Dec 2025',
+    badge: 'Generative AI',
+    badgeClass: 'badge-cyan',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V11a2 2 0 0 1-2 2h0a2 2 0 0 1-2-2V9.5C8.8 8.8 8 7.5 8 6a4 4 0 0 1 4-4z"></path><path d="M12 13v9"></path><path d="M7 17l5-4 5 4"></path></svg>`,
+    description: 'Theoretical foundations of large generative models, attention mechanisms, prompt engineering, and real-world enterprise AI adoption.'
+  },
+  {
+    title: 'Master Generative AI & Tools',
+    issuer: 'Udemy',
+    date: 'Aug 2025',
+    badge: 'Specialization',
+    badgeClass: 'badge-blue',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+    description: 'Hands-on development using LLM APIs, prompt architecture, autonomous agent patterns, and generative AI toolchains.'
+  }
+];
+
+const achievements = [
+  {
+    title: 'Code Off Duty Hackathon — Round 2 Qualifier',
+    org: 'Coding Wise',
+    date: 'Mar 2025',
+    badge: 'Competitive Hackathon',
+    description: 'Qualified for Round 2 of the Code Off Duty Web Hackathon, designing and defending production-ready full-stack prototypes and algorithmic solutions under stringent time constraints.'
+  },
+  {
+    title: 'Data Structures and Algorithms Using C++',
+    org: 'Comprehensive Training',
+    date: 'Jun 2025 – Aug 2025',
+    badge: '3-Month Intensive',
+    description: 'Completed 3-month rigorous algorithmic training mastering advanced graph algorithms, dynamic programming, priority queues, and asymptotic complexity optimization for robust software design.'
+  }
+];
+---
+
+<section class="cert-section" id="certifications" aria-label="Certifications and Achievements">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-emerald">Verified Credentials</div>
+      <h2 class="section-title">Certifications & Achievements</h2>
+      <p class="section-subtitle">
+        Official credentials from Oracle University, Infosys Springboard, and competitive engineering hackathons.
+      </p>
+    </div>
+
+    <div class="cert-grid">
+      <!-- Certifications Column -->
+      <div class="certs-column">
+        <h3 class="subsection-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="title-icon">
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          </svg>
+          Professional Certifications
+        </h3>
+
+        <div class="certs-list">
+          {certifications.map((cert) => (
+            <div class="cert-card glass-panel">
+              <div class="cert-top">
+                <div class="cert-icon-box" set:html={cert.icon} />
+                <div class="cert-header-meta">
+                  <span class:list={['badge', cert.badgeClass]}>{cert.badge}</span>
+                  <span class="cert-date">{cert.date}</span>
+                </div>
+              </div>
+
+              <h4 class="cert-name">{cert.title}</h4>
+              <div class="cert-issuer">{cert.issuer}</div>
+              <p class="cert-desc">{cert.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Achievements & Training Column -->
+      <div class="achieve-column">
+        <h3 class="subsection-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="title-icon">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Achievements & Rigorous Training
+        </h3>
+
+        <div class="achieve-list">
+          {achievements.map((ach) => (
+            <div class="achieve-card glass-panel">
+              <div class="achieve-meta">
+                <span class="badge badge-emerald">{ach.badge}</span>
+                <span class="achieve-date">{ach.date}</span>
+              </div>
+              <h4 class="achieve-name">{ach.title}</h4>
+              <div class="achieve-org">{ach.org}</div>
+              <p class="achieve-desc">{ach.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cert-section {
+    padding: 6rem 0;
+    position: relative;
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .subsection-title {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 1.75rem;
+    font-family: var(--font-heading);
+  }
+
+  .title-icon {
+    color: var(--color-accent-cyan);
+  }
+
+  .certs-list, .achieve-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .cert-card, .achieve-card {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  }
+
+  .cert-card:hover, .achieve-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+  }
+
+  .cert-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cert-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 0.625rem;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--color-accent-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cert-header-meta, .achieve-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .cert-date, .achieve-date {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-family: var(--font-heading);
+  }
+
+  .cert-name, .achieve-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 0.35rem;
+    line-height: 1.35;
+  }
+
+  .cert-issuer, .achieve-org {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-accent-cyan);
+    margin-bottom: 0.85rem;
+  }
+
+  .cert-desc, .achieve-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .cert-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

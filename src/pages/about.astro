@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import LearningJourney from '../components/LearningJourney.astro';
+import EducationSection from '../components/EducationSection.astro';
+import CertificationsSection from '../components/CertificationsSection.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="About Annamneedi Suresh Kumar | AI/ML & Software Engineer"
+  description="Learn about Annamneedi Suresh Kumar — B.Tech Computer Science student at Lovely Professional University, focused on AI/ML, Generative AI, Edge Model Compression, and scalable software systems."
+>
+  <Navigation />
+
+  <main class="about-page">
+    <div class="container">
+      <header class="about-hero-header">
+        <div class="about-avatar-box">
+          <img src={`${base}sureshphoto.jpeg`} alt="Annamneedi Suresh Kumar" class="about-avatar-img" />
+        </div>
+        <div class="badge badge-cyan">Profile & Philosophy</div>
+        <h1 class="page-title">About Suresh Kumar</h1>
+        <p class="page-subtitle">
+          AI/ML Engineer, Generative AI Developer, and Software Engineer focused on building high-performance, intelligent applications.
+        </p>
+      </header>
+
+      <div class="about-sections-grid">
+        <!-- Story Section -->
+        <section class="story-card glass-panel">
+          <h2 class="section-card-title">Engineering Perspective</h2>
+          <div class="story-paragraphs">
+            <p>
+              I am a final-year <strong>B.Tech Computer Science and Engineering (Artificial Intelligence & Machine Learning)</strong> student at <strong>Lovely Professional University</strong> (Expected Graduation: <strong>2027</strong>; <strong>CGPA: 8.32</strong>). My work sits at the convergence of machine learning research and systems software engineering.
+            </p>
+            <p>
+              My primary conviction is that machine learning is only as valuable as its reliability, efficiency, and real-world deployment viability. In an era dominated by monolithic architectures and ballooning parameter counts, I focus on architectural elegance: designing <strong>Mixture of Experts (MoE)</strong> routing layers that conditionally allocate compute, benchmarking <strong>edge model compression</strong> (pruning, INT8 quantization, distillation) to make deep neural networks fly on constrained hardware, and building structured <strong>RAG & Agentic workflows</strong>.
+            </p>
+            <p>
+              Simultaneously, I treat software engineering with equal craftsmanship. Whether writing type-safe TypeScript, architecting high-throughput asynchronous FastAPI backends, or configuring multi-stage Dockerfiles and automated GitHub Actions pipelines, I strive for clean, modular, and reproducible engineering.
+            </p>
+          </div>
+        </section>
+
+        <!-- Core Interest Domains -->
+        <section class="interests-card glass-panel">
+          <h2 class="section-card-title">Areas of Focus & Exploration</h2>
+          <div class="interests-list">
+            <div class="interest-item">
+              <div class="interest-bullet"></div>
+              <div>
+                <strong>Mixture of Experts (MoE):</strong> Sparse conditional computation, top-k dynamic routing, load balancing loss functions, and modular sub-networks.
+              </div>
+            </div>
+            <div class="interest-item">
+              <div class="interest-bullet"></div>
+              <div>
+                <strong>Edge Model Compression:</strong> Structured/unstructured weight pruning, Post-Training INT8 Quantization (PTQ), Quantization-Aware Training (QAT), and Knowledge Distillation.
+              </div>
+            </div>
+            <div class="interest-item">
+              <div class="interest-bullet"></div>
+              <div>
+                <strong>Generative AI & LLMs:</strong> Transformers, attention mechanics, instruction fine-tuning, hybrid RAG pipelines, and deterministic tool-augmented AI agents.
+              </div>
+            </div>
+            <div class="interest-item">
+              <div class="interest-bullet"></div>
+              <div>
+                <strong>High-Performance Backends:</strong> Asynchronous microservices with FastAPI, efficient tensor serving pipelines, and relational database schemas with SQL.
+              </div>
+            </div>
+            <div class="interest-item">
+              <div class="interest-bullet"></div>
+              <div>
+                <strong>DevOps & Reproducibility:</strong> Multi-container orchestration with Docker Compose, automated CI/CD with GitHub Actions, and Infrastructure as Code fundamentals.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Embedded Education, Credentials & Technical Journey -->
+      <EducationSection />
+      <CertificationsSection />
+      <LearningJourney />
+
+      <!-- Contact CTA Callout -->
+      <section class="about-cta glass-panel">
+        <div class="cta-inner">
+          <h2 class="cta-title">Interested in Collaborating?</h2>
+          <p class="cta-desc">
+            I am actively looking for AI/ML and software engineering opportunities, research projects, and technical discussions.
+          </p>
+          <div class="cta-buttons">
+            <a href={`${base}#contact`} class="btn btn-primary">
+              <span>Get in Touch</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+            <a href={`${base}projects/`} class="btn btn-secondary">
+              <span>View All Projects</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding: calc(var(--nav-height) + 3rem) 0 6rem;
+    min-height: 100vh;
+  }
+
+  .about-hero-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-avatar-box {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-cyan));
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid #0B0F19;
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0.75rem 0 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .page-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
+  }
+
+  .about-sections-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .story-card, .interests-card {
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .story-paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .story-paragraphs p {
+    color: var(--color-text-dim);
+    line-height: 1.75;
+    font-size: 0.98rem;
+  }
+
+  .story-paragraphs strong {
+    color: #FFFFFF;
+  }
+
+  .interests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .interest-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: 0.92rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
+  }
+
+  .interest-item strong {
+    color: var(--color-accent-cyan);
+  }
+
+  .interest-bullet {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  /* About CTA */
+  .about-cta {
+    padding: 3.5rem 2rem;
+    text-align: center;
+    border-radius: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .cta-inner {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 0.85rem;
+  }
+
+  .cta-desc {
+    color: var(--color-text-dim);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .about-sections-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

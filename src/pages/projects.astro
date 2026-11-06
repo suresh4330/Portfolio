@@ -1,0 +1,233 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+
+const categories = ['All', 'AI / Deep Learning', 'Machine Learning', 'Full Stack & DevOps', 'Full Stack & Web'];
+---
+
+<BaseLayout
+  title="AI & Machine Learning Projects | Annamneedi Suresh Kumar"
+  description="Explore the complete project portfolio of Annamneedi Suresh Kumar — Mixture of Experts (IntelliMoE), Edge Model Compression Benchmark on ResNet-18, Machine Learning Recommendation Engines, and Full-Stack Systems."
+>
+  <Navigation />
+
+  <main class="projects-page">
+    <div class="container">
+      <header class="projects-hero-header">
+        <div class="badge badge-ai">Engineering Portfolio</div>
+        <h1 class="page-title">Featured Projects</h1>
+        <p class="page-subtitle">
+          Intelligent architectures, empirical deep learning compression benchmarks, machine learning recommendation systems, and production full-stack software.
+        </p>
+
+        <!-- Category Filters -->
+        <div class="filter-bar" role="tablist" aria-label="Project Categories">
+          {categories.map((cat, idx) => (
+            <button
+              class:list={['filter-btn', { active: idx === 0 }]}
+              data-filter={cat}
+              role="tab"
+              aria-selected={idx === 0 ? 'true' : 'false'}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </header>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projects-grid">
+        {sortedProjects.map((project) => (
+          <div class="project-item" data-category={project.data.category}>
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              problem={project.data.problem}
+              features={project.data.features}
+              metrics={project.data.metrics}
+              category={project.data.category}
+              tags={project.data.tags}
+              github={project.data.github}
+              link={project.data.link}
+              featured={project.data.featured}
+              image={project.data.image}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Engineering Standards Callout -->
+      <section class="standards-banner glass-panel">
+        <div class="standards-content">
+          <h3>Engineering Rigor & Methodologies</h3>
+          <p>
+            All projects are engineered with reproducibility, disciplined experiment logging, and modular architecture. Machine learning pipelines feature cross-validation, trade-off profiling, and containerized microservices.
+          </p>
+        </div>
+        <div class="standards-action">
+          <a href={`${base}#contact`} class="btn btn-primary">
+            Discuss a Project
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .projects-page {
+    padding: calc(var(--nav-height) + 3rem) 0 6rem;
+    min-height: 100vh;
+  }
+
+  .projects-hero-header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0.75rem 0 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .page-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
+  }
+
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.15rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    color: var(--color-text-dim);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .filter-btn:hover {
+    color: #FFFFFF;
+    background: rgba(59, 130, 246, 0.12);
+    border-color: rgba(59, 130, 246, 0.35);
+  }
+
+  .filter-btn.active {
+    color: #FFFFFF;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.25));
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px var(--color-primary-glow);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .project-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .project-item.hidden {
+    display: none;
+  }
+
+  /* Standards Banner */
+  .standards-banner {
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    border-radius: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .standards-content {
+    max-width: 720px;
+  }
+
+  .standards-content h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+  }
+
+  .standards-content p {
+    color: var(--color-text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .standards-banner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<script>
+  const setupFilters = () => {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const items = document.querySelectorAll<HTMLElement>('.project-item');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const selected = btn.getAttribute('data-filter');
+
+        items.forEach((item) => {
+          const itemCategory = item.getAttribute('data-category');
+          if (selected === 'All' || itemCategory === selected) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  };
+
+  setupFilters();
+  document.addEventListener('astro:page-load', setupFilters);
+</script>

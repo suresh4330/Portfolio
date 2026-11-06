@@ -1,0 +1,366 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  problem?: string | undefined;
+  features?: string[] | undefined;
+  metrics?: string | undefined;
+  category?: string | undefined;
+  tags?: string[] | undefined;
+  github?: string | undefined;
+  link?: string | undefined;
+  featured?: boolean | undefined;
+  image?: string | undefined;
+}
+
+const base = import.meta.env.BASE_URL;
+const {
+  title,
+  description,
+  problem,
+  features = [],
+  metrics,
+  category = 'AI / Deep Learning',
+  tags = [],
+  github,
+  link,
+  featured,
+  image
+} = Astro.props;
+
+const imageSrc = image?.startsWith('/') ? `${base}${image.slice(1)}` : image;
+
+// Determine category theme badge
+const getCategoryBadgeClass = (cat: string) => {
+  if (cat.includes('Deep Learning')) return 'badge-purple';
+  if (cat.includes('Machine Learning')) return 'badge-cyan';
+  if (cat.includes('Full Stack') || cat.includes('DevOps') || cat.includes('Web')) return 'badge-blue';
+  return 'badge-blue';
+};
+---
+
+<article class="project-card glass-panel" data-category={category}>
+  <div class="card-inner">
+    <!-- Visual Architecture Preview Diagram -->
+    {image && (
+      <div class="project-preview-box">
+        <img src={imageSrc} alt={`${title} architecture diagram`} loading="lazy" />
+      </div>
+    )}
+
+    <!-- Header with Category & Featured Badge -->
+    <div class="card-header">
+      <div class="header-badges">
+        <span class:list={['badge', getCategoryBadgeClass(category)]}>{category}</span>
+        {featured && <span class="badge badge-emerald">Featured</span>}
+      </div>
+      {metrics && (
+        <span class="metrics-pill" title="Verified Project Metric">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          {metrics}
+        </span>
+      )}
+    </div>
+
+    <!-- Title & Short Description -->
+    <h3 class="project-title">{title}</h3>
+    <p class="project-desc">{description}</p>
+
+    <!-- Problem Statement Block -->
+    {problem && (
+      <div class="problem-box">
+        <span class="problem-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          Problem Statement
+        </span>
+        <p class="problem-text">{problem}</p>
+      </div>
+    )}
+
+    <!-- Key Architectural Features -->
+    {features && features.length > 0 && (
+      <div class="features-wrapper">
+        <span class="features-label">Key Features & Architecture</span>
+        <ul class="features-list">
+          {features.slice(0, 3).map((feat) => (
+            <li>
+              <svg class="bullet-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+              <span>{feat}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <!-- Tech Stack Tags -->
+    {tags && tags.length > 0 && (
+      <div class="tech-tags">
+        {tags.map((tag) => (
+          <span class="tag-pill">{tag}</span>
+        ))}
+      </div>
+    )}
+
+    <!-- Card Action Links -->
+    <div class="project-actions">
+      {github ? (
+        <a href={github} class="action-btn action-github" target="_blank" rel="noopener noreferrer" aria-label={`View ${title} source on GitHub`}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      ) : (
+        <span class="action-btn disabled">Repo on Request</span>
+      )}
+
+      {link && (
+        <a href={link} class="action-btn action-demo" target="_blank" rel="noopener noreferrer" aria-label={`View live demo of ${title}`}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          <span>Live Demo</span>
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    padding: 1.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 1.25rem;
+    height: 100%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .project-preview-box {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    border-radius: 0.65rem;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    background: #030712;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .project-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover .project-preview-box img {
+    transform: scale(1.03);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .header-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .metrics-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6EE7B7;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+  }
+
+  .project-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 0.65rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    color: var(--color-text-dim);
+    font-size: 0.93rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Problem Statement Box */
+  .problem-box {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0.5rem;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .problem-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .problem-text {
+    font-size: 0.85rem;
+    color: #CBD5E1;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Key Features List */
+  .features-wrapper {
+    margin-bottom: 1.25rem;
+  }
+
+  .features-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    font-size: 0.84rem;
+    color: var(--color-text-dim);
+    line-height: 1.45;
+  }
+
+  .bullet-icon {
+    color: var(--color-accent-cyan);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  /* Tech tags */
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    margin-bottom: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .tag-pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #94A3B8;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.35rem;
+  }
+
+  /* Project Action buttons */
+  .project-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.45rem 0.95rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .action-github {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+  }
+
+  .action-github:hover {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: var(--color-primary);
+    color: #FFFFFF;
+  }
+
+  .action-demo {
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    color: var(--color-accent-cyan);
+  }
+
+  .action-demo:hover {
+    background: var(--color-accent-cyan);
+    color: #030712;
+    border-color: var(--color-accent-cyan);
+  }
+
+  .action-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--color-text-muted);
+  }
+</style>

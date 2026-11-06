@@ -1,0 +1,207 @@
+---
+// Three.js 3D Particle & Geometry Background with reduced-motion support
+---
+
+<canvas id="three-canvas" aria-hidden="true"></canvas>
+
+<script>
+  import * as THREE from 'three';
+
+  let scene: THREE.Scene | null = null;
+  let camera: THREE.PerspectiveCamera | null = null;
+  let renderer: THREE.WebGLRenderer | null = null;
+  let particlesMesh: THREE.Points<THREE.BufferGeometry, THREE.PointsMaterial> | null = null;
+  let torus: THREE.Mesh<THREE.TorusGeometry, THREE.MeshBasicMaterial> | null = null;
+  let torus2: THREE.Mesh<THREE.TorusGeometry, THREE.MeshBasicMaterial> | null = null;
+  let animationId: number | null = null;
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetMouseX = 0;
+  let targetMouseY = 0;
+  let time = 0;
+
+  const prefersReducedMotion = () => {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+
+  const handleMouseMove = (event: MouseEvent) => {
+    targetMouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    targetMouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+  };
+
+  const handleResize = () => {
+    if (!camera || !renderer) return;
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  };
+
+  function initThreeAnimation() {
+    const canvas = document.getElementById('three-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    cleanupThreeAnimation();
+
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    camera.position.z = 5.5;
+
+    // AI / Deep Learning Particle System (5,000 synaptic nodes)
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = prefersReducedMotion() ? 1000 : 4000;
+    const posArray = new Float32Array(particlesCount * 3);
+    const colorArray = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i += 3) {
+      posArray[i] = (Math.random() - 0.5) * 90;
+      posArray[i + 1] = (Math.random() - 0.5) * 90;
+      posArray[i + 2] = (Math.random() - 0.5) * 90;
+
+      // Color nodes: Cyan (0.02, 0.71, 0.83), Violet (0.54, 0.36, 0.96), Deep Blue (0.14, 0.38, 0.92)
+      const colorType = Math.random();
+      if (colorType < 0.4) {
+        // Electric Blue / Violet
+        colorArray[i] = 0.54;
+        colorArray[i + 1] = 0.36;
+        colorArray[i + 2] = 0.96;
+      } else if (colorType < 0.75) {
+        // Cyan
+        colorArray[i] = 0.02;
+        colorArray[i + 1] = 0.71;
+        colorArray[i + 2] = 0.83;
+      } else {
+        // Deep Azure
+        colorArray[i] = 0.23;
+        colorArray[i + 1] = 0.51;
+        colorArray[i + 2] = 0.96;
+      }
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.14,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.75,
+      blending: THREE.AdditiveBlending,
+    });
+
+    particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    // Torus Rings symbolizing neural orbits
+    const torusGeometry = new THREE.TorusGeometry(11, 2.5, 16, 90);
+    const torusMaterial = new THREE.MeshBasicMaterial({
+      color: 0x8b5cf6,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.2,
+    });
+    torus = new THREE.Mesh(torusGeometry, torusMaterial);
+    scene.add(torus);
+
+    const torus2Geometry = new THREE.TorusGeometry(16, 1.8, 16, 90);
+    const torus2Material = new THREE.MeshBasicMaterial({
+      color: 0x06b6d4,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.15,
+    });
+    torus2 = new THREE.Mesh(torus2Geometry, torus2Material);
+    torus2.rotation.x = Math.PI / 3;
+    torus2.rotation.y = Math.PI / 6;
+    scene.add(torus2);
+
+    window.addEventListener('resize', handleResize);
+
+    if (!prefersReducedMotion()) {
+      document.addEventListener('mousemove', handleMouseMove, { passive: true });
+      time = 0;
+      animate();
+    } else {
+      // Single static render for reduced motion
+      renderer.render(scene, camera);
+    }
+  }
+
+  function animate() {
+    if (!scene || !camera || !renderer || !particlesMesh || !torus || !torus2) return;
+
+    animationId = requestAnimationFrame(animate);
+    time += 0.001;
+
+    // Smooth lerp mouse follow
+    mouseX += (targetMouseX - mouseX) * 0.05;
+    mouseY += (targetMouseY - mouseY) * 0.05;
+
+    // Subtle cosmic orbit
+    particlesMesh.rotation.y = time * 0.2;
+    particlesMesh.rotation.x = Math.sin(time * 0.8) * 0.06;
+
+    torus.rotation.x += 0.004;
+    torus.rotation.y += 0.003;
+
+    torus2.rotation.x += 0.002;
+    torus2.rotation.y += 0.005;
+
+    camera.position.x = mouseX * 1.5;
+    camera.position.y = mouseY * 1.5;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+  }
+
+  function cleanupThreeAnimation() {
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+
+    document.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('resize', handleResize);
+
+    if (particlesMesh) {
+      particlesMesh.geometry.dispose();
+      particlesMesh.material.dispose();
+      particlesMesh = null;
+    }
+    if (torus) {
+      torus.geometry.dispose();
+      torus.material.dispose();
+      torus = null;
+    }
+    if (torus2) {
+      torus2.geometry.dispose();
+      torus2.material.dispose();
+      torus2 = null;
+    }
+    if (renderer) {
+      renderer.dispose();
+      renderer = null;
+    }
+    scene = null;
+    camera = null;
+  }
+
+  document.addEventListener('astro:page-load', initThreeAnimation);
+  document.addEventListener('astro:before-preparation', cleanupThreeAnimation);
+</script>
+
+<style>
+  #three-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.9;
+  }
+</style>

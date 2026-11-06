@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import Footer from '../../components/Footer.astro';
+
+const allBlogPosts = await getCollection('blog');
+const sortedPosts = allBlogPosts.sort((a, b) =>
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Technical Articles | Annamneedi Suresh Kumar"
+  description="Technical articles and architecture notes by Annamneedi Suresh Kumar — Mixture of Experts, Edge Model Compression, Neural Optimization, and Agentic AI."
+>
+  <Navigation />
+
+  <main class="blog-page">
+    <div class="container">
+      <header class="blog-hero-header">
+        <div class="badge badge-purple">Engineering Notes</div>
+        <h1 class="page-title">Technical Articles</h1>
+        <p class="page-subtitle">
+          In-depth explorations of sparse neural architectures, edge model compression techniques, and scalable AI engineering.
+        </p>
+      </header>
+
+      <div class="blog-grid">
+        {sortedPosts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            slug={post.id}
+            tags={post.data.tags}
+          />
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .blog-page {
+    padding: calc(var(--nav-height) + 3rem) 0 6rem;
+    min-height: 100vh;
+  }
+
+  .blog-hero-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0.75rem 0 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .page-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+{
+  "name": "suresh-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Personal AI/ML & Software Engineering Portfolio of Annamneedi Suresh Kumar",
+  "keywords": [
+    "portfolio",
+    "ai-ml",
+    "generative-ai",
+    "deep-learning",
+    "three-js",
+    "astro",
+    "typescript"
+  ],
+  "author": "Annamneedi Suresh Kumar <annamneedisuresh003@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suresh4330/Portfolio.git"
+  },
+  "homepage": "https://suresh4330.github.io/Portfolio",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^6.0.0",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^6.0.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@types/three": "^0.184.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

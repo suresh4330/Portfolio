@@ -1,0 +1,353 @@
+---
+// About Me section component - Highlighting background, engineering philosophy, and focus domains
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="about-section" id="about" aria-label="About Annamneedi Suresh Kumar">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-cyan">Background & Focus</div>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        Bridging theoretical machine learning research with robust, scalable software engineering.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <!-- Main Narrative Column -->
+      <div class="about-narrative glass-panel">
+        <div class="narrative-bio-header">
+          <div class="bio-portrait-box">
+            <img src={`${base}sureshphoto.jpeg`} alt="Annamneedi Suresh Kumar" class="bio-portrait" />
+          </div>
+          <div class="bio-intro-text">
+            <h3 class="narrative-heading">
+              Engineering Intelligent Systems for the Next Generation of Software
+            </h3>
+            <span class="bio-title-tag">AI/ML Engineer • Generative AI Developer • Software Engineer</span>
+          </div>
+        </div>
+        <p>
+          I am a final-year <strong>B.Tech Computer Science and Engineering (Artificial Intelligence & Machine Learning)</strong> student at <strong>Lovely Professional University</strong> (graduating in <strong>2027</strong>; <strong>CGPA: 8.32</strong>), with an intense dedication to artificial intelligence, neural networks, and scalable systems development.
+        </p>
+        <p>
+          My engineering journey is centered around building practical, deployable software. Rather than treating AI as a black box, I explore core architectural mechanics: designing <strong>Mixture-of-Experts routing</strong> layers, benchmarking <strong>edge model compression</strong> techniques (structured pruning, INT8 quantization, distillation), and building responsive <strong>LLM, RAG and Vector Search pipelines</strong>.
+        </p>
+        <p>
+          Beyond algorithms, I value end-to-end craft: building low-latency <strong>FastAPI microservices</strong>, typed frontend user interfaces, and automated <strong>Docker & CI/CD</strong> pipelines. I hold the <strong>Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</strong> credential and approach engineering with curiosity, disciplined experimentation, and technical rigor.
+        </p>
+
+        <!-- Education Card Spotlight -->
+        <div class="education-spotlight">
+          <div class="edu-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+          </div>
+          <div class="edu-details">
+            <div class="edu-degree">B.Tech Computer Science & Engineering (AI & ML)</div>
+            <div class="edu-school">Lovely Professional University • Punjab, India</div>
+            <div class="edu-meta">
+              <span class="edu-badge">CGPA: 8.32</span>
+              <span class="edu-badge edu-badge-grad">Graduation: Jul 2027</span>
+              <span class="edu-focus">Focus: AI/ML, Generative AI, Edge Computing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Focus Pillars -->
+      <div class="pillars-column">
+        <div class="pillar-card glass-panel">
+          <div class="pillar-icon pillar-ai">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V11a2 2 0 0 1-2 2h0a2 2 0 0 1-2-2V9.5C8.8 8.8 8 7.5 8 6a4 4 0 0 1 4-4z"></path>
+              <path d="M12 13v9"></path>
+              <path d="M7 17l5-4 5 4"></path>
+            </svg>
+          </div>
+          <div class="pillar-content">
+            <h4>Generative AI & LLMs</h4>
+            <p>Developing dynamic Mixture-of-Experts routing, retrieval-augmented generation (RAG), and agentic workflows with transformers and PyTorch.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card glass-panel">
+          <div class="pillar-icon pillar-compress">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+              <line x1="9" y1="9" x2="15" y2="15"></line>
+              <line x1="15" y1="9" x2="9" y2="15"></line>
+            </svg>
+          </div>
+          <div class="pillar-content">
+            <h4>Edge Optimization & Compression</h4>
+            <p>Benchmarking neural network pruning, post-training INT8 quantization, and knowledge distillation on ResNet-18 to minimize latency on edge hardware.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card glass-panel">
+          <div class="pillar-icon pillar-devops">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+              <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+            </svg>
+          </div>
+          <div class="pillar-content">
+            <h4>Full-Stack & Cloud DevOps</h4>
+            <p>Architecting containerized microservices with Docker, Docker Compose, automated CI/CD workflows, and production-ready APIs.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card glass-panel">
+          <div class="pillar-icon pillar-learn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div class="pillar-content">
+            <h4>Continuous Technical Experimentation</h4>
+            <p>Actively following recent AI/ML research, implementing novel architectures from scratch, and rigorously benchmarking performance trade-offs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: 6rem 0;
+    position: relative;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .about-narrative {
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .narrative-bio-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .bio-portrait-box {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-cyan));
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
+    flex-shrink: 0;
+  }
+
+  .bio-portrait {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid #0B0F19;
+  }
+
+  .bio-intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .bio-title-tag {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-accent-cyan);
+    font-family: var(--font-heading);
+  }
+
+  .narrative-heading {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .about-narrative p {
+    color: var(--color-text-dim);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  .about-narrative strong {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  /* Education Spotlight */
+  .education-spotlight {
+    margin-top: 1rem;
+    padding: 1.25rem;
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 0.75rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .edu-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent-cyan);
+    flex-shrink: 0;
+  }
+
+  .edu-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .edu-degree {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: #FFFFFF;
+    font-size: 1.05rem;
+  }
+
+  .edu-school {
+    color: var(--color-text-dim);
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+
+  .edu-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+  }
+
+  .edu-badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #6EE7B7;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .edu-badge-grad {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.35);
+    color: #93C5FD;
+  }
+
+  .btn-edu-cv {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    gap: 0.35rem;
+  }
+
+  .edu-focus {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Pillars Column */
+  .pillars-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .pillar-card {
+    padding: 1.35rem;
+    display: flex;
+    gap: 1.125rem;
+    align-items: flex-start;
+  }
+
+  .pillar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pillar-ai {
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: #C084FC;
+  }
+
+  .pillar-compress {
+    background: rgba(6, 182, 212, 0.12);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    color: #67E8F9;
+  }
+
+  .pillar-devops {
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #93C5FD;
+  }
+
+  .pillar-learn {
+    background: rgba(236, 72, 153, 0.12);
+    border: 1px solid rgba(236, 72, 153, 0.3);
+    color: #F472B6;
+  }
+
+  .pillar-content h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+  }
+
+  .pillar-content p {
+    font-size: 0.88rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 960px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .education-spotlight {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
